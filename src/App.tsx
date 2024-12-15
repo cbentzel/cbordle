@@ -19,7 +19,7 @@ const App: React.FC = () => {
         <div className="App">
             <h1>Wordle Clone</h1>
             <Board guesses={guesses} targetWord={targetWord} />
-            <Keyboard onGuess={handleGuess} />
+            <Keyboard onGuess={handleGuess} guesses={guesses} targetWord={targetWord} />
         </div>
     );
 };

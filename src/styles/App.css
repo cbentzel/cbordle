@@ -52,25 +52,53 @@ h1 {
 }
 
 .keyboard {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
-}
-
-.key {
-    width: 40px;
-    height: 40px;
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
+  }
+  
+  .keyboard .guess-display {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .keyboard .keyboard-row {
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .keyboard button {
+    width: 40px;
+    height: 40px;
+    margin: 2px;
     font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
+  }
+  
+  .keyboard button:active {
+    background-color: #ddd;
+  }
 
-.key:hover {
-    background-color: #d0d0d0;
-}
+  .keyboard button.correct {
+    background-color: #6aaa64;
+    border-color: #6aaa64;
+  }
+  
+  .keyboard button.misplaced {
+    background-color: #c9b458;
+    border-color: #c9b458;
+  }
+  
+  .keyboard button.incorrect {
+    background-color: #787c7e;
+    border-color: #787c7e;
+  }
+  
+  .keyboard button:active {
+    background-color: #ddd;
+  }
