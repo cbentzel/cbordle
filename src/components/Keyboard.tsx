@@ -74,7 +74,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ onGuess, guesses, targetWord }) => 
             ))}
         </div>
         <div key={2} className="keyboard-row">
-            <button onClick={handleEnter}>ENTER</button>
+            <button className="special" onClick={handleEnter}>ENTER</button>
             {'ZXCVBNM'.split('').map((letter) => (
             <button
                 key={letter}
@@ -84,7 +84,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ onGuess, guesses, targetWord }) => 
                 {letter}
             </button>
             ))}
-            <button onClick={handleDelete}>DEL</button>
+            <button className="special" onClick={handleDelete}>DEL</button>
         </div>
     </div>
   );

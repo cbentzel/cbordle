@@ -62,6 +62,10 @@ h1 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
+    height: 40px; /* Set a fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .keyboard .keyboard-row {
@@ -101,4 +105,10 @@ h1 {
   
   .keyboard button:active {
     background-color: #ddd;
+  }
+
+
+.keyboard button.special {
+    width: 60px; /* 1.5 times the width of regular keys */
+    font-size: 12px; /* Smaller font size */
   }
