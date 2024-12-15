@@ -23,7 +23,7 @@ h1 {
     display: flex;
   }
   
-  .cell {
+.cell {
     width: 40px;
     height: 40px;
     border: 1px solid #000;
@@ -37,7 +37,7 @@ h1 {
 }
 
 .cell.correct {
-    background-color: #6aaa64;
+    background-color: #38a92e;
     border-color: #6aaa64;
 }
 
