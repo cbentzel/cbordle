@@ -5,7 +5,7 @@ import './styles/App.css';
 
 const App: React.FC = () => {
     const [guesses, setGuesses] = useState<string[]>([]);
-    const [targetWord, setTargetWord] = useState<string>('puzzle'); // Example target word
+    const targetWord = 'puzzle';
     const maxGuesses = 8;
 
     const handleGuess = (guess: string) => {
