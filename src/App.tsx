@@ -8,8 +8,21 @@ import { shuffleArray } from './utils/shuffle';
 const seed = 'foobar';
 const shuffleWords = shuffleArray(words, seed);
 
-const getTargetWord = () => {
-    return shuffleWords[497].toUpperCase();
+const startDate = new Date('2024-12-15');
+
+function getTargetWord() {
+    const daysSince = getDaysSince(startDate);
+    if (daysSince > shuffleWords.length) {
+        return 'WORDLE';
+    } else {
+        return shuffleWords[daysSince].toUpperCase();
+    }
+}
+
+function getDaysSince(date: Date): number {
+    const now = new Date();
+    const diffTime = Math.abs(now.getTime() - date.getTime());
+    return Math.floor(diffTime / (1000 * 60 * 60 * 24));
 }
 
 const App: React.FC = () => {

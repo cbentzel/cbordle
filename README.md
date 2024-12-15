@@ -58,8 +58,6 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 * Logic for yellow (misplaced) tiles when more than one matches. e.g. if the target word is "PUZZLE" and the current guess is "GULLET" then both L's are marked yellow - only one should be.
 
-* Array of target words for the day, and only allow one per day.
-
 * Only allow words from a dictionary, instead of arbitrary words.
 
 * End-game support - don't allow more gueses once guessed, congrats, ideally a "share button"
