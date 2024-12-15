@@ -2,10 +2,19 @@ import React, { useState } from 'react';
 import Board from './components/Board';
 import Keyboard from './components/Keyboard';
 import './styles/App.css';
+import words from './data/words.json';
+import { shuffleArray } from './utils/shuffle';
+
+const seed = 'foobar';
+const shuffleWords = shuffleArray(words, seed);
+
+const getTargetWord = () => {
+    return shuffleWords[497].toUpperCase();
+}
 
 const App: React.FC = () => {
     const [guesses, setGuesses] = useState<string[]>([]);
-    const targetWord = 'PUZZLE';
+    const targetWord = getTargetWord();;
     const maxGuesses = 8;
 
     const handleGuess = (guess: string) => {

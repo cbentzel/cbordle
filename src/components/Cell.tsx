@@ -9,7 +9,7 @@ interface CellProps {
 
 const Cell: React.FC<CellProps> = ({ letter, index, targetWord }) => {
   const getStatus = (): string => {
-    if (letter == '') {
+    if (letter === '') {
       return 'empty';
     } else if (targetWord[index] === letter) {
       return 'correct';
