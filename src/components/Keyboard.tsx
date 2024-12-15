@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 
 interface KeyboardProps {
   onGuess: (guess: string) => void;
@@ -9,24 +9,42 @@ interface KeyboardProps {
 const Keyboard: React.FC<KeyboardProps> = ({ onGuess, guesses, targetWord }) => {
   const [guess, setGuess] = useState<string>('');
 
-  const handleLetter = (letter: string) => {
+  const handleLetter = useCallback((letter: string) => {
     if (guess.length < 6) {
       setGuess(guess + letter);
     }
-  }
+  }, [guess]);
 
-  const handleDelete = () => {
+  const handleDelete = useCallback(() => {
     if (guess.length > 0) {
       setGuess(guess.slice(0, -1));
     }
-  }
+  }, [guess]);
 
-  const handleEnter = () => {
+  const handleEnter = useCallback(() => {
     if (guess.length === 6) {
       onGuess(guess);
       setGuess('');
     }
-  }
+  }, [guess, onGuess]);
+
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      const { key } = event;
+      if (key === 'Enter') {
+        handleEnter();
+      } else if (key === 'Backspace') {
+        handleDelete();
+      } else if (/^[a-zA-Z]$/.test(key)) {
+        handleLetter(key.toUpperCase());
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [handleEnter, handleDelete, handleLetter]);
 
   const getLetterStatus = (letter: string): string => {
     let status = '';

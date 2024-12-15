@@ -82,6 +82,9 @@ h1 {
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 5px; /* Add this line to round the corners */
   }
   
   .keyboard button:active {
