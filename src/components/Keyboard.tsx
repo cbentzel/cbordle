@@ -22,7 +22,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ onGuess }) => {
 
   const handleEnter = () => {
     if (guess.length === 6) {
-      onGuess('word', guess);
+      onGuess(guess);
       setGuess('');
     }
   }

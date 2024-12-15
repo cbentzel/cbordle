@@ -9,6 +9,7 @@ const App: React.FC = () => {
     const maxGuesses = 8;
 
     const handleGuess = (guess: string) => {
+        console.log(guess);
         if (guesses.length < maxGuesses && guess.length === 6) {
             setGuesses([...guesses, guess]);
         }
