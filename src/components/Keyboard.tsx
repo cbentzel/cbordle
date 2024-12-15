@@ -46,34 +46,46 @@ const Keyboard: React.FC<KeyboardProps> = ({ onGuess, guesses, targetWord }) => 
     return status;
   };
 
-  const rows = [
-    'QWERTYUIOP'.split(''),
-    'ASDFGHJKL'.split(''),
-    'ZXCVBNM'.split('')
-  ];
-
   return (
     <div className="keyboard">
       <div className="guess-display">
         {guess}
       </div>
-      {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className="keyboard-row">
-          {row.map((letter) => (
-            <button
-              key={letter}
-              onClick={() => handleLetter(letter)}
-              className={getLetterStatus(letter)}
-            >
-              {letter}
-            </button>
-          ))}
+        <div key={0} className="keyboard-row">
+            {'QWERTYUIOP'.split('').map((letter) => (
+                <button
+                    key={letter}
+                    onClick={() => handleLetter(letter)}
+                    className={getLetterStatus(letter)}
+                >
+                    {letter}
+                </button>
+            ))}
         </div>
-      ))}
-      <div className="keyboard-row">
-        <button onClick={handleDelete}>Delete</button>
-        <button onClick={handleEnter}>Enter</button>
-      </div>
+        <div key={1} className="keyboard-row">
+            {'ASDFGHJKL'.split('').map((letter) => (
+            <button
+                key={letter}
+                onClick={() => handleLetter(letter)}
+                className={getLetterStatus(letter)}
+            >
+                {letter}
+            </button>
+            ))}
+        </div>
+        <div key={2} className="keyboard-row">
+            <button onClick={handleEnter}>ENTER</button>
+            {'ZXCVBNM'.split('').map((letter) => (
+            <button
+                key={letter}
+                onClick={() => handleLetter(letter)}
+                className={getLetterStatus(letter)}
+            >
+                {letter}
+            </button>
+            ))}
+            <button onClick={handleDelete}>DEL</button>
+        </div>
     </div>
   );
 };
