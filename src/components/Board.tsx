@@ -8,10 +8,16 @@ interface BoardProps {
 
 const Board : React.FC<BoardProps> = ({guesses, targetWord}) => {
  
+    const maxGuesses = 8;
+    const emptyRows = maxGuesses - guesses.length;
+
     return (
-        <div>
+        <div className="board">
             {guesses.map((guess, index) => (
                 <Row key={index} guess={guess} targetWord={targetWord} />
+            ))}
+            {Array.from({ length: emptyRows }).map((_, index) => (
+                <Row key={index + guesses.length} guess="" targetWord={targetWord} />
             ))}
         </div>
     );

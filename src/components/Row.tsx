@@ -7,9 +7,11 @@ interface RowProps {
 }
 
 const Row: React.FC<RowProps> = ({ guess, targetWord }) => {
+  const letters = guess.split('').concat(Array(6 - guess.length).fill(''));
+
   return (
     <div className="row">
-      {guess.split('').map((letter, index) => (
+      {letters.map((letter, index) => (
         <Cell key={index} letter={letter} index={index} targetWord={targetWord}/>
       ))}
     </div>
