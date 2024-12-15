@@ -2,14 +2,15 @@ import React from 'react';
 import Cell from './Cell';
 
 interface RowProps {
-  letters: string[];
+  guess: string,
+  targetWord: string
 }
 
-const Row: React.FC<RowProps> = ({ letters }) => {
+const Row: React.FC<RowProps> = ({ guess, targetWord }) => {
   return (
     <div className="row">
-      {letters.map((letter, index) => (
-        <Cell key={index} letter={letter} />
+      {guess.split('').map((letter, index) => (
+        <Cell key={index} letter={letter} index={index} targetWord={targetWord}/>
       ))}
     </div>
   );

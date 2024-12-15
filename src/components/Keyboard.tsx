@@ -1,19 +1,23 @@
 import React from 'react';
 
-const Keyboard = ({ onLetterClick, onEnterClick, onDeleteClick }) => {
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+interface KeyboardProps {
+  onGuess: (action: string, letter?: string) => void;
+}
 
-    return (
-        <div className="keyboard">
-            {letters.map((letter) => (
-                <button key={letter} onClick={() => onLetterClick(letter)}>
-                    {letter}
-                </button>
-            ))}
-            <button onClick={onDeleteClick}>Delete</button>
-            <button onClick={onEnterClick}>Enter</button>
-        </div>
-    );
+const Keyboard: React.FC<KeyboardProps> = ({ onGuess }) => {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+  return (
+    <div className="keyboard">
+      {letters.map((letter) => (
+        <button key={letter} onClick={() => onGuess('letter', letter)}>
+          {letter}
+        </button>
+      ))}
+      <button onClick={() => onGuess('delete')}>Delete</button>
+      <button onClick={() => onGuess('enter')}>Enter</button>
+    </div>
+  );
 };
 
 export default Keyboard;

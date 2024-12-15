@@ -2,12 +2,24 @@ import React from 'react';
 
 interface CellProps {
   letter: string;
-  status: 'correct' | 'incorrect' | 'misplaced' | 'empty';
+  index: number;
+  targetWord: string;
 }
 
-const Cell: React.FC<CellProps> = ({ letter, status }) => {
+
+const Cell: React.FC<CellProps> = ({ letter, index, targetWord }) => {
+  const getStatus = (): string => {
+    if (targetWord[index] === letter) {
+      return 'correct';
+    } else if (targetWord.includes(letter)) {
+      return 'misplaced';
+    } else {
+      return 'incorrect';
+    }
+  };
+
   const getClassName = () => {
-    switch (status) {
+    switch (getStatus()) {
       case 'correct':
         return 'cell correct';
       case 'misplaced':
