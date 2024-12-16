@@ -4,29 +4,33 @@ interface KeyboardProps {
   onGuess: (guess: string) => void;
   guesses: string[];
   targetWord: string;
+  disabled: boolean;
 }
 
-const Keyboard: React.FC<KeyboardProps> = ({ onGuess, guesses, targetWord }) => {
+const Keyboard: React.FC<KeyboardProps> = ({ onGuess, guesses, targetWord, disabled }) => {
   const [guess, setGuess] = useState<string>('');
 
   const handleLetter = useCallback((letter: string) => {
+    if (disabled) { return; }
     if (guess.length < 6) {
       setGuess(guess + letter);
     }
-  }, [guess]);
+  }, [guess, disabled]);
 
   const handleDelete = useCallback(() => {
+    if (disabled) { return; }
     if (guess.length > 0) {
       setGuess(guess.slice(0, -1));
     }
-  }, [guess]);
+  }, [guess, disabled]);
 
   const handleEnter = useCallback(() => {
+    if (disabled) { return; }
     if (guess.length === 6) {
       onGuess(guess);
       setGuess('');
     }
-  }, [guess, onGuess]);
+  }, [guess, onGuess, disabled]);
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
